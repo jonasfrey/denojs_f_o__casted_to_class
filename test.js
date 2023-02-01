@@ -140,9 +140,24 @@ var o_person__casted_to_class = f_o__casted_to_class(
 );
 
 console.log(o_person__not_an_instance)
+// {
+// s_name: "Hans",
+// WorseCognomen: { BadPropNameThatShouldntExist: "!_!" },
+// WorseCognomina: [ { BadPropNameThatShouldntExist: "-,-" } ],
+// a_o_hand: [
+//     { s_side: "left", a_o_finger: [ [Object] ] },
+//     { s_side: "right", a_o_finger: [ [Object] ] }
+// ]
+// }
 console.log(o_person__casted_to_class)
-
-console.log(o_person__not_an_instance.a_o_hand)
-console.log(o_person__casted_to_class.a_o_hand)
+// O_person {
+//     s_name: "Hans",
+//     WorseCognomen: BadClassNameThatShouldntExist { BadPropNameThatShouldntExist: "!_!" },
+//     WorseCognomina: [ BadClassNameThatShouldntExist { BadPropNameThatShouldntExist: "-,-" } ],
+//     a_o_hand: [
+//     O_hand { s_side: "left", a_o_finger: [ [Object] ] },
+//     O_hand { s_side: "right", a_o_finger: [ [Object] ] }
+//     ]
+// }
 // readme.md:```
 // readme.md:endfile

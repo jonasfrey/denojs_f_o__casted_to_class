@@ -1,4 +1,4 @@
-<!-- {"s_msg":"this file was automatically generated","s_by":"generate_readme.js","s_ts_created":"Wed Feb 01 2023 15:47:32 GMT+0100 (Central European Standard Time)","n_ts_created":1675262852505} -->
+<!-- {"s_msg":"this file was automatically generated","s_by":"generate_readme.js","s_ts_created":"Wed Feb 01 2023 15:55:20 GMT+0100 (Central European Standard Time)","n_ts_created":1675263320138} -->
 
 # casting multidimensional objects to classes
 lets say we have some classes   
@@ -139,9 +139,24 @@ var o_person__casted_to_class = f_o__casted_to_class(
 );
 
 console.log(o_person__not_an_instance)
+// {
+// s_name: "Hans",
+// WorseCognomen: { BadPropNameThatShouldntExist: "!_!" },
+// WorseCognomina: [ { BadPropNameThatShouldntExist: "-,-" } ],
+// a_o_hand: [
+//     { s_side: "left", a_o_finger: [ [Object] ] },
+//     { s_side: "right", a_o_finger: [ [Object] ] }
+// ]
+// }
 console.log(o_person__casted_to_class)
-
-console.log(o_person__not_an_instance.a_o_hand)
-console.log(o_person__casted_to_class.a_o_hand)
+// O_person {
+//     s_name: "Hans",
+//     WorseCognomen: BadClassNameThatShouldntExist { BadPropNameThatShouldntExist: "!_!" },
+//     WorseCognomina: [ BadClassNameThatShouldntExist { BadPropNameThatShouldntExist: "-,-" } ],
+//     a_o_hand: [
+//     O_hand { s_side: "left", a_o_finger: [ [Object] ] },
+//     O_hand { s_side: "right", a_o_finger: [ [Object] ] }
+//     ]
+// }
 ```
 // 
