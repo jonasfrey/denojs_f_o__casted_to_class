@@ -1,5 +1,9 @@
 import { f_o__casted_to_class } from "./f_o__casted_to_class.module.js"
 
+// readme.md:startfile
+// readme.md:# casting multidimensional objects to classes
+// readme.md:lets say we have some classes   
+// readme.md:```javascript 
 class BadClassNameThatShouldntExist{
     constructor(BadPropNameThatShouldntExist){
         this.BadPropNameThatShouldntExist = BadPropNameThatShouldntExist;
@@ -24,7 +28,48 @@ class O_finger{
         this.s_name= s_name
     }
 }
-
+// readme.md:```
+// readme.md: and then we have an json/object and we know it should be an instance of this class 
+// readme.md: this could be the case if we have some json, for example from a http request  
+// readme.md:```javascript
+var o_person = {
+    s_name: "Hans",
+    on_class_non_existing_prop: "this prop does not exist in class O_person",
+    WorseCognomen: null,
+    WorseCognomina: null,
+    // a_o_hand: null, // this prop exists in the class O_person but does not in the object o_person, it will be initialized with null
+}
+// readme.md:```
+// readme.md: we can now cast that object to the class using the function 'f_o__casted_to_class'
+// readme.md:```javascript
+var o_person__casted_to_class = f_o__casted_to_class(
+    o_person,
+    [
+        O_person
+    ], // a_o_class
+    O_person
+);
+console.log(o_person)
+// {
+//     s_name: "Hans",
+//     on_class_non_existing_prop: "this prop does not exist in class O_person",
+//     WorseCognomen: null,
+//     WorseCognomina: null
+// }
+console.log(o_person__casted_to_class)
+// O_person { 
+//     s_name: "Hans",
+//     WorseCognomen: null,
+//     WorseCognomina: null,
+//     a_o_hand: null
+// }
+// readme.md:```
+console.log("---")
+// readme.md:o_person__casted_to_class is now an instance of class O_person
+// readme.md:## multidimensional/nested objects
+// readme.md:we can do the same with multidimensional nested objects and classes
+// readme.md:```javascript
+// this is what we got
 var o_person__not_an_instance = {
     s_name : "Hans", 
     WorseCognomen: {BadPropNameThatShouldntExist:"!_!"},
@@ -48,6 +93,9 @@ var o_person__not_an_instance = {
         }
     ]
 }
+// readme.md:```
+// readme.md:```javascript
+// this is what we want 
 var o_person__instance = new O_person(
     "Hans", 
     new BadClassNameThatShouldntExist("!_!"),
@@ -69,15 +117,18 @@ var o_person__instance = new O_person(
         )
     ]
 );
+// readme.md:```
 
-
+// readme.md:```javascript
 var a_o_class = [
     O_person,
     {
+        // some classes may contain a bad name not following the scheme 'o_...' and 'a_o...'
+        // so we can define custom propety names for instances and array of instances for such cases
         s_prop_name_instance: "WorseCognomen",
         s_prop_name_instance_array: "WorseCognomina",
         o_class:BadClassNameThatShouldntExist
-    },// some classes may contain a bad name not following the scheme 'o_...' and 'a_o...'
+    },
     O_hand,
     O_finger
 ];
@@ -93,3 +144,5 @@ console.log(o_person__casted_to_class)
 
 console.log(o_person__not_an_instance.a_o_hand)
 console.log(o_person__casted_to_class.a_o_hand)
+// readme.md:```
+// readme.md:endfile

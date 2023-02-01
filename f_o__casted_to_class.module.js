@@ -13,21 +13,23 @@ var f_o__casted_to_class = function(
 
         var s_prop_name_class = s_prop_name;
         var value = o_object[s_prop_name];
-        var s_array_prefix = "a_";
-        if(s_prop_name.indexOf(s_array_prefix) == 0){
-            s_prop_name_class = s_prop_name.substring(s_array_prefix.length);
-        }
+
         var o_class = a_o_class.map(
             o=>{
                 if(o.constructor.name == "Object"){
-                    var o_class = o[s_prop_name_class]
-                    if(o_class){
-                        return o_class
-                    } 
+                    if(
+                        s_prop_name_class == o.s_prop_name_instance
+                        ||
+                        s_prop_name_class == o.s_prop_name_instance_array
+                        ){
+                            return o.o_class
+                    }
                     return false
                 }
                 // console.log(o.name)
-                var b_match = o.name.toLowerCase() == s_prop_name_class;
+                var b_match = 
+                    o.name.toLowerCase() == s_prop_name_class || 
+                    `a_${o.name.toLowerCase()}` == s_prop_name_class;
                 if(b_match){
                     return o
                 }
@@ -56,7 +58,7 @@ var f_o__casted_to_class = function(
             }
             continue
         }
-        o_class_instance[s_prop_name] = value
+        o_class_instance[s_prop_name] = (value) ? value : null;
 
     } 
     return o_class_instance
