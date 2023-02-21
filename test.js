@@ -160,4 +160,38 @@ console.log(o_person__casted_to_class)
 //     ]
 // }
 // readme.md:```
+
+// readme.md:more tests
+// readme.md:```javascript
+class O_test_sub{
+    constructor(
+        s_name 
+    ){
+        this.s_name = s_name
+    }
+}
+class O_test{
+    constructor(
+        n_id, 
+        o_test_sub,
+        a_o_test_sub
+    ){
+        this.n_id = n_id
+        this.o_test_sub = o_test_sub
+        this.a_o_test_sub = a_o_test_sub
+    }
+}
+var o = f_o__casted_to_class(
+    {a:'test string thsi should be object', n_id: 2, a_o_test_sub: [{},{s_name:"hans"}]},
+    [O_test, O_test_sub],
+    O_test
+);
+console.log(o)
+//logs 
+// O_test {
+//     n_id: 2,
+//     o_test_sub: O_test_sub { s_name: null },
+//     a_o_test_sub: [ O_test_sub { s_name: null }, O_test_sub { s_name: "hans" } ]
+//   }
+// readme.md:```
 // readme.md:endfile

@@ -6,13 +6,19 @@ var f_o__casted_to_class = function(
     var o_class_instance = new o_class__start();
     for(var s_prop_name in o_class_instance){
 
+        var s_prop_name_class = s_prop_name;
+
+        try {
+            var value = o_object[s_prop_name];
+        } catch (error) {
+            var value = null;
+            
+        }
         // if(!o_object.hasOwnProperty(s_prop_name)){
-        //     var s_msg = `'${s_prop_name}': property is not set on the object / object must be instance of class ${o_class}`
-        //     throw s_msg;
+        //     // var s_msg = `'${s_prop_name}': property is not set on the object / object must be instance of class ${o_class}`
+        //     // throw s_msg;
         // }
 
-        var s_prop_name_class = s_prop_name;
-        var value = o_object[s_prop_name];
 
         var o_class = a_o_class.map(
             o=>{
