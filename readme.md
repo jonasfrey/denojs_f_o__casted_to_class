@@ -1,4 +1,4 @@
-<!-- {"s_msg":"this file was automatically generated","s_by":"generate_readme.js","s_ts_created":"Tue Feb 21 2023 13:26:05 GMT+0100 (Central European Standard Time)","n_ts_created":1676982365592} -->
+<!-- {"s_msg":"this file was automatically generated","s_by":"generate_readme.js","s_ts_created":"Tue Feb 21 2023 13:29:44 GMT+0100 (Central European Standard Time)","n_ts_created":1676982584570} -->
 
 # casting multidimensional objects to classes
 lets say we have some classes   
@@ -161,7 +161,7 @@ console.log(o_person__casted_to_class)
 ```
 
 more tests
-```
+```javascript
 class O_test_sub{
     constructor(
         s_name 
@@ -186,5 +186,11 @@ var o = f_o__casted_to_class(
     O_test
 );
 console.log(o)
+//logs 
+// O_test {
+//     n_id: 2,
+//     o_test_sub: O_test_sub { s_name: null },
+//     a_o_test_sub: [ O_test_sub { s_name: null }, O_test_sub { s_name: "hans" } ]
+//   }
 ```
 // 
